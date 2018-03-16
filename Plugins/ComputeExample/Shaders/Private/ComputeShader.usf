@@ -1,0 +1,43 @@
+#include "/Engine/Private/Common.ush"
+
+
+/**
+Uniform Buffers
+
+BEGIN_UNIFORM_BUFFER_STRUCT(FComputeExampleConstantParameters, )
+DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER(float, Speed)
+END_UNIFORM_BUFFER_STRUCT(FComputeExampleConstantParameters)
+
+BEGIN_UNIFORM_BUFFER_STRUCT(FComputeExampleVariableParameters, )
+DECLARE_UNIFORM_BUFFER_STRUCT_MEMBER(float, GlobalTime)
+END_UNIFORM_BUFFER_STRUCT(FComputeExampleVariableParameters)
+
+struct FBoid
+{
+	FVector4 Pos;
+	FVector4 Vel;
+};
+
+*/
+
+struct Boid
+{
+    float4 Pos;
+    float4 Vel;
+};
+
+RWStructuredBuffer<Boid> BoidData;
+
+
+[numthreads(8, 8, 8)]
+void MainComputeShader(uint3 ThreadId : SV_DispatchThreadID)
+{
+	
+    Boid b;
+
+    BoidData[0] = b;
+    
+    b.Vel += float4(0.1f);
+    b.Pos = float4(float(ThreadId));
+    
+}

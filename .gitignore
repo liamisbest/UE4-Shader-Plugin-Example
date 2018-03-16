@@ -1,0 +1,12 @@
+Binaries
+DerivedDataCache
+Intermediate
+Saved
+.vs
+*.opensdf
+*.sdf
+*.sln
+*.suo
+*.xcodeproj
+Plugins/ComputeExample/Binaries
+Plugins/ComputeExample/Intermediate
